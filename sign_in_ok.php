@@ -19,6 +19,7 @@
         if($password == $db_pw['password']) {
             // 세션에 값을 저장한다.
             $_SESSION['no'] = $db_pw['no'];
+            $_SESSION['pw'] = $db_pw['password'];
             $_SESSION['email'] = $db_pw['email'];
             
             echo "

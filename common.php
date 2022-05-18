@@ -7,6 +7,7 @@ $host = "localhost";
 $user = "root";
 $db = "hoysung3";
 
+// 디비 서버 접속
 $conn =mysqli_connect($host, $user, null, $db);
 
 // print_r($conn);
