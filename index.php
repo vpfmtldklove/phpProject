@@ -1,13 +1,14 @@
-<? php
+<?php
 
 include("common.php");
+
 if ($_SESSION) {
     echo "로그인 정보가 있습니다";
 } else {
     echo "
-    <script)
+    <script>
         location.href='sign_in.php';
-    </script)
+    </script>
     ";
 }
 
@@ -22,8 +23,17 @@ if ($_SESSION) {
     <title>Document</title>
 </head>
 <body>
-    <div style="background-color: black; padding: 30px" color:white; text-align:center;>
+    <div style="background-color: black; padding: 30px; color: white; text-align:center;">
         header
+        <?php echo $_SESSION['email'] . "님 환영합니다"?>
+        <button onclick="logout()">로그아웃</button>
     </div>
 </body>
 </html>
+
+<script>
+    function logout() {
+        location.href = "logout.php";
+    }
+    
+</script>
