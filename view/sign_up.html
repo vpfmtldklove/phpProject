@@ -71,7 +71,7 @@
 
     
     <!-- Custom styles for this template -->
-    <link href="signin.css" rel="stylesheet">
+    <link href="view/signin.css" rel="stylesheet">
   </head>
   <body class="text-center">
     
@@ -81,11 +81,14 @@
     <h1 class="h3 mb-3 fw-normal">회원가입</h1>
 
     <div class="form-floating">
-      <input name="email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+      <input id="email" name="email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+      <input onclick="ckeckID()" class="w-10 btn btn-primary" type="button" value="아이디체크">
       <label for="floatingInput">Email address</label>
+      <p id="emailCheckF" style="color: red; display:none;">아이디가 중복됩니다</p>
+      <p id="emailCheckT" style="color: green; display:none;">사용가능합니다</p>
     </div>
     <div class="form-floating">
-      <input name="password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
+      <input name="password" type="password" class="form-control" id="floatingPassword" placeholder="Password" autocomplete="">
       <label for="floatingPassword">Password</label>
     </div>
 
@@ -104,3 +107,24 @@
   </body>
 </html>
 
+<script>
+  function ckeckID() {
+    var http = new XMLHttpRequest();
+    http.onreadystatechange = function () {
+      if(this.status == 200 && this.readyState == this.DONE) {
+          if(JSON.parse (http.response)['result'] == 'y') {
+            document.querySelector('#emailCheckF').style.display='block';
+            document.querySelector('#emailCheckT').style.display='none';
+          } else {
+            document.querySelector('#emailCheckT').style.display='block';
+            document.querySelector('#emailCheckF').style.display='none';
+          }
+      }
+    }
+    var email = document.querySelector('#email').value;
+
+    var url = "http://localhost/phpProject/apl/check_id.php?email=" + email;
+    http.open('GET', url);
+    http.send();
+  }
+</script>
