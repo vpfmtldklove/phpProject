@@ -14,7 +14,6 @@ $conn =mysqli_connect($host, $user, null, $db);
 
 ?>
 <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
-
 <nav class="navbar navbar-expand-lg bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="index.php">게시판</a>
@@ -29,7 +28,6 @@ $conn =mysqli_connect($host, $user, null, $db);
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="write.php">글작성</a>
         </li>
-       
       </ul>
         <b><?php echo $_SESSION['email'] . "님 환영합니다"?></b>
         <button onclick="myInfoUpdate()" class="btn btn-outline-success" type="submit" style="margin: 0 10px 0 10px;">정보수정</button>
