@@ -29,6 +29,9 @@ if ($_SESSION) {
         <button onclick="myInfoUpdate()">정보수정</button>
         <button onclick="logout()">로그아웃</button>
     </div>
+    <div>
+        <?php include('view/board.html');?>
+    </div>
 </body>
 </html>
 
