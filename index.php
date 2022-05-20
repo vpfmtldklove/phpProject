@@ -11,6 +11,16 @@ if ($_SESSION) {
     </script>
     ";
 }
+$sql = "select
+            no,
+            title,
+            writer,
+            insertTime
+        from board";
+
+$result = $conn -> query($sql);
+
+
 
 ?>
 
@@ -25,12 +35,35 @@ if ($_SESSION) {
 <body>
     <div style="background-color: black; padding: 30px; color: white; text-align:center;">
         header
-        <?php echo $_SESSION['email'] . "님 환영합니다"?>
-        <button onclick="myInfoUpdate()">정보수정</button>
-        <button onclick="logout()">로그아웃</button>
+    </div>
+    <div style="margin: 5px;">
+        <?php include('view/board.html');?>
     </div>
     <div>
-        <?php include('view/board.html');?>
+        <table class="table table-dark table-striped table-hover" style="text-align: center;">
+            <thead>
+                <tr>
+                    <th>구분</th>
+                    <th>제목</th>
+                    <th>작성자</th>
+                    <th>시간</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php while ($row = mysqli_fetch_assoc($result)) { ?>
+                <tr>
+                    <td><?php echo $row['no'] ?></td>
+                    <td>
+                        <a href="content.php?no=<?php echo $row['no'] ?>">
+                        <?php echo $row['title'] ?>
+                        </a>
+                    </td>
+                    <td><?php echo $row['writer'] ?></td>
+                    <td><?php echo $row['insertTime'] ?></td>
+                </tr>
+                <?php }?>
+            </tbody>
+        </table>
     </div>
 </body>
 </html>

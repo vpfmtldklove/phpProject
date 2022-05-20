@@ -5,7 +5,7 @@ include('common.php');
 $title = $_POST['title'];
 $content = addslashes($_POST['content']);
 $writer = $_SESSION['email'];
-$insertTime = date("Y-m-d- H:i:s");
+$insertTime = date("Y-m-d H:i:s");
 // print($insertTime);
 
 $sql = "insert into board set
@@ -14,7 +14,7 @@ $sql = "insert into board set
         writer = '$writer',
         insertTime = '$insertTime'
         ";
-echo $sql;
+
 $result = $conn -> query($sql);
 
 if($result) {
